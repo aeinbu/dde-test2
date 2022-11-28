@@ -1,0 +1,19 @@
+
+# https://hub.docker.com/_/microsoft-dotnet-sdk/
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim
+
+RUN useradd -s /bin/bash -m vscode
+RUN groupadd docker 
+RUN usermod -aG docker vscode
+
+RUN mkdir -p /home/vscode/.vscode-server/extensions
+RUN chown -R vscode /home/vscode/.vscode-server
+
+# RUN mkdir -p /home/workspace
+# RUN chown -R vscode /home/workspace
+
+USER $USERNAME
+
+ENTRYPOINT ["sleep", "infinity"]
+
+
